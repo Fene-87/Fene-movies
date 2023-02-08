@@ -17,7 +17,7 @@
 
 # 📖 FeneMovies <a name="about-project"></a>
 
-**FeneMovies** is a project whereby I get to develop a webapp based on the TvMaze Api. The application allows users to view movies, view specific details, and leave a like and a comment. The user can also see all other comments and likes given to the specific movie.
+**FeneMovies** is a project whereby I get to develop a webapp based on the TvMaze Api. The application allows users to view movies, view specific details, and leave a like and a comment. The user can also see all other comments and likes given to the specific movie. While developing this webapp, I use the right gitflow as well as a Kanban board to help me manage my tasks.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
