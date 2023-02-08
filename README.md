@@ -1,2 +1,2 @@
-# JavaScript-Capstone
-JavaScript project for the completion of module 2
+# Webpack
+This is boilerplate code that I have created for for Webpack
