@@ -1,3 +1,23 @@
-.hello {
-    color: red;
-  }
+nav {
+  display: flex;
+}
+
+.nav-items {
+  display: flex;
+}
+
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.movie {
+  border: 1px solid black;
+  width: 30%;
+}
+
+.movie-img {
+  width: 100px;
+  height: 100px;
+}
