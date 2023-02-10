@@ -1,4 +1,13 @@
+import displayItems from "./displayItems";
+import { getComments } from "./commentsApi";
+
 const commentsPopup = (movieDetails) => {
+    /*const movieComments = async () => {
+        const movieComment = await getComments(movieDetails.show.id);
+        return movieComment;
+    }*/
+//    const totalComments = movieComments();
+//    console.log(totalComments)
     const popupWindow = document.querySelector('.comments-popup');
     const window = document.createElement('div');
     window.classList.add('popup-window');
@@ -9,6 +18,7 @@ const commentsPopup = (movieDetails) => {
         </div>
 
         <div class="popup-details">
+            <p class="movieId">${movieDetails.show.id}</p>
             <h1 class="popup-title">${movieDetails.show.name}</h1>
             <ul class="popup-list">
                 <li>Fuel: titanium</li>
@@ -22,8 +32,7 @@ const commentsPopup = (movieDetails) => {
             <div class="all-comments">
                 <h3>Comments (2)</h3>
                 <div class="comment-text">
-                    <p>03/12/2021 Alex: I'd love to buy it</p>
-                    <p>11/12/2021 Mia: I love it</p>
+                    
                 </div>
             </div>
             <div class="add-comment">
@@ -31,19 +40,41 @@ const commentsPopup = (movieDetails) => {
                 <form action="" class="comment-form">
                     <input type="text" placeholder="Your name" class="name-input">
                     <textarea name="" id="" cols="30" rows="10" placeholder="Your insights" class="comment-input"></textarea>
-                    <button type="button" class="comment-btn">Comment</button>
+                    <button type="button" class="comment-button">Comment</button>
                 </form>
             </div>
         </div>
-    `
+    `;
 
-    
+    popupWindow.appendChild(window);
 
-    popupWindow.appendChild(window)
     const removeButton = document.querySelector('.remove-btn');
     removeButton.addEventListener('click', () => {
         popupWindow.classList.remove('comments-popup-toggle');
+        location.reload()
     })
+
+    const commentButton = document.querySelector('.comment-button')
+    const movieId = commentButton.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.textContent;
+
+        const movieComments = async () => {
+            const movieComment = await getComments(movieId);
+            return movieComment;
+        }
+        
+        (async () => {
+            const receivedId = await movieComments()
+            const commentText = document.querySelector('.comment-text')
+            const allComments = JSON.parse(receivedId)
+            console.log(allComments)
+            allComments.forEach((comment) => {
+                const newDisplayComment = document.createElement('p');
+                newDisplayComment.innerHTML = `${comment.creation_date} ${comment.username}: ${comment.comment}`
+                commentText.appendChild(newDisplayComment);
+            })
+        })()
+
+    
 }
 
 export default commentsPopup

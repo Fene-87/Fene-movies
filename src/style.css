@@ -130,7 +130,11 @@ nav {
     padding: 10px;
 }
 
-.comment-btn {
+.comment-button {
     padding: 10px;
     width: 100px;
+}
+
+.movieId {
+  display: none;
 }
