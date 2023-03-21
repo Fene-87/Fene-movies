@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../../components/navbar/Navbar';
+import Loading from '../../components/loading/Loading';
 
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
+      <Loading />
     </div>
   )
 }
