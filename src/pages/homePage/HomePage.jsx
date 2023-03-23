@@ -25,10 +25,15 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <section className="trending-container">
-        {movieList.map((movie) => {
-          return <MovieCard key={movie.id} {...movie} />
-        })}
+      <section className="movies-section">
+        <div className="titles-header">
+          <h3 className="trending-title">Trending</h3>
+        </div>
+        <div className="trending-container">
+          {movieList.map((movie) => {
+            return <MovieCard key={movie.id} {...movie} />
+          })}
+        </div>
       </section>
     </div>
   )
