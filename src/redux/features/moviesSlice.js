@@ -6,9 +6,11 @@ const initialState = {
   status: 'idle',
 };
 
-export const fetchMovies = createAsyncThunk('movies/fetchMovies', async (show) => {
+const apiKey = '21cc7d168db0bf35988d739cf92720f6';
+
+export const fetchTrending = createAsyncThunk('movies/fetchMovies', async (show) => {
   try {
-    const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${show}`);
+    const response = await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`);
     return response.data;
   } catch (error) {
     return error.message;
@@ -20,20 +22,21 @@ const moviesSlice = createSlice({
   initialState,
   extraReducers(builder) {
     builder
-      .addCase(fetchMovies.pending, (state) => ({
+      .addCase(fetchTrending.pending, (state) => ({
         ...state,
-        status: 'laoding',
+        status: 'loading',
       }))
-      .addCase(fetchMovies.fulfilled, (state, { payload }) => {
-        const keys = Object.keys(payload);
+      .addCase(fetchTrending.fulfilled, (state, { payload }) => {
+        const keys = Object.keys(payload.results);
         const tempArray = [];
         keys.forEach((key) => {
-          tempArray.push(payload[key]);
+          tempArray.push(payload.results[key]);
         })
         state.movieList = [...tempArray];
+        console.log(state.names);
         state.status = 'successful';
       })
-      .addCase(fetchMovies.rejected, (state, action) => ({
+      .addCase(fetchTrending.rejected, (state, action) => ({
         ...state,
         status: 'failed',
       }))

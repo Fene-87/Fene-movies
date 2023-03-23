@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.trending-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
