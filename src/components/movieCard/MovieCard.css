@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.movie-card {
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  width: 300px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movie-title {
+  color: #d3d3d3;
+  font-size: 15px;
+  font-family: 'lato', sans-serif;
+  letter-spacing: 3px;
+}
